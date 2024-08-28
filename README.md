@@ -35,7 +35,7 @@ Before starting, ensure you have the following software installed:
    - Use Fastp for short reads to remove adapters and low-quality bases.
      
      ```
-     fastp ...
+     fastp -i in.R1.fq.gz -I in.R2.fq.gz -o out.R1.fq.gz -O out.R2.fq.gz
      ```
 ## Short Read Alignment and SNP Calling with Snippy
 
@@ -66,6 +66,7 @@ Snippy is an all-in-one tool for bacterial SNP calling using short-read data. It
    - Convert and sort the alignment.
      ```
      samtools view -S -b aligned_long_reads.sam > aligned_long_reads.bam
+     
      samtools sort aligned_long_reads.bam -o sorted_long_reads.bam
      ```
 ### 3. Index the BAM File:
@@ -80,7 +81,26 @@ Snippy is an all-in-one tool for bacterial SNP calling using short-read data. It
      # Assuming DeepVariant is installed and properly set up
      run_deepvariant --model_type PACBIO --ref reference.fasta --reads sorted_long_reads.bam --output_vcf dv_output.vcf --output_gvcf dv_output.g.vcf --num_shards 4
      ```
-## -Use PEPPER DeepVariant for nanopore reads: https://github.com/kishwarshafin/pepper
+## Use PEPPER DeepVariant for nanopore reads: https://github.com/kishwarshafin/pepper
+
+```
+## Pull the docker image.
+sudo docker pull kishwars/pepper_deepvariant:r0.8
+
+# Run PEPPER-Margin-DeepVariant
+sudo docker run \
+-v "${INPUT_DIR}":"${INPUT_DIR}" \
+-v "${OUTPUT_DIR}":"${OUTPUT_DIR}" \
+kishwars/pepper_deepvariant:r0.8 \
+run_pepper_margin_deepvariant call_variant \
+-b "${INPUT_DIR}/${BAM}" \
+-f "${INPUT_DIR}/${REF}" \
+-o "${OUTPUT_DIR}" \
+-p "${OUTPUT_PREFIX}" \
+-t "${THREADS}" \
+--ont_r10_q20
+```
+
 
 ### Post-processing and Analysis
 
@@ -121,6 +141,8 @@ Snippy is an all-in-one tool for bacterial SNP calling using short-read data. It
 6. Andrews S. (2010). FastQC: A quality control tool for high throughput sequence data. Available online: http://www.bioinformatics.babraham.ac.uk/projects/fastqc
 
 7. Ewels P, Magnusson M, Lundin S, Käller M. (2016). MultiQC: summarize analysis results for multiple tools and samples in a single report. Bioinformatics, 32(19), 3047-3048. https://doi.org/10.1093/bioinformatics/btw354
+
+8. Cingolani P, Platts A, Wang le L, Coon M, Nguyen T, Wang L, Land SJ, Lu X, Ruden DM. A program for annotating and predicting the effects of single nucleotide polymorphisms, SnpEff: SNPs in the genome of Drosophila melanogaster strain w1118; iso-2; iso-3. Fly (Austin). 2012 Apr-Jun;6(2):80-92. doi: 10.4161/fly.19695. PMID: 22728672; PMCID: PMC3679285.
 
 
 
