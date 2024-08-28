@@ -112,7 +112,7 @@ run_pepper_margin_deepvariant call_variant \
      ```
 
 ## 2. Annotation of SNPs:
-   - Use tools like snpEff to annotate the SNPs.
+   - Use snpEff to annotate the SNPs.
      ```
      #short reads
      snpEff ann -v reference filtered_snps_short.vcf > annotated_snps_short.vcf
@@ -141,9 +141,6 @@ run_pepper_margin_deepvariant call_variant \
 6. Andrews S. (2010). FastQC: A quality control tool for high throughput sequence data. Available online: http://www.bioinformatics.babraham.ac.uk/projects/fastqc
 
 7. Ewels P, Magnusson M, Lundin S, Käller M. (2016). MultiQC: summarize analysis results for multiple tools and samples in a single report. Bioinformatics, 32(19), 3047-3048. https://doi.org/10.1093/bioinformatics/btw354
-
-8. Cingolani P, Platts A, Wang le L, Coon M, Nguyen T, Wang L, Land SJ, Lu X, Ruden DM. A program for annotating and predicting the effects of single nucleotide polymorphisms, SnpEff: SNPs in the genome of Drosophila melanogaster strain w1118; iso-2; iso-3. Fly (Austin). 2012 Apr-Jun;6(2):80-92. doi: 10.4161/fly.19695. PMID: 22728672; PMCID: PMC3679285.
-
 
 
 
