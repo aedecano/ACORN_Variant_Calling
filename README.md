@@ -94,7 +94,10 @@ Snippy is an all-in-one tool for bacterial SNP calling using short-read data. It
 ## 2. Annotation of SNPs:
    - Use tools like snpEff to annotate the SNPs.
      ```
+     #short reads
      snpEff ann -v reference filtered_snps_short.vcf > annotated_snps_short.vcf
+
+     #long reads
      snpEff ann -v reference filtered_snps_long.vcf > annotated_snps_long.vcf
      ```
 
