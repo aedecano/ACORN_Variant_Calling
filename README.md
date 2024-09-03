@@ -146,8 +146,8 @@ run_pepper_margin_deepvariant call_variant \
      ```
 
 ## 3. Visualization:
-   - Visualize the alignment and SNPs using tools like IGV (Integrative Genomics Viewer).
-
+   - Visualize the alignment and SNPs using tools using Integrative Genomics Viewer (IGV).
+   - Download IGV from https://igv.org/doc/desktop/#DownloadPage/.
 
 
 ## References
