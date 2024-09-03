@@ -74,18 +74,13 @@ Snippy is an all-in-one tool for bacterial SNP calling using short-read data. It
      ```
      samtools index sorted_long_reads.bam
      ```
-### 4. Call the variants against the reference genome.
+### 4. Call genetic variants against the reference genome.
 
 #### 4.1 Run Medaka:
   - Use Medaka to call SNPs from the long-read BAM file.
     ```
     medaka_haploid_variant -i longread.input.fastq.gz -r reference.fasta
     ```
- - Filter variants using bcftools. Remove SNPs/Indels with MQ < 30.
-   ```
-   bcftools filter -i 'INFO/MQ >= 30' input.vcf -o filtered_output.vcf
-
-   ```
 
 #### 4.2 Run DeepVariant:
    - Use minimap2 for aligning long reads.
@@ -134,10 +129,10 @@ run_pepper_margin_deepvariant call_variant \
 ### Post-processing and Analysis
 
 ## 1. Filter SNPs:
-   - Apply filters to the VCF files to ensure high-quality SNPs using bcftools.
+   - Apply filters to the VCF files to ensure high-quality SNPs using bcftools. Remove SNPs/Indels with MQ<30 and DP<10.
      ```
-     bcftools filter -s LowQual -e '%QUAL<20 || DP<10' snippy_output/snps.vcf > filtered_snps_short.vcf
-     bcftools filter -s LowQual -e '%QUAL<20 || DP<10' dv_output.vcf > filtered_snps_long.vcf
+     bcftools filter -s LowQual -e '%QUAL<30 || DP<10' snippy_output/snps.vcf > filtered_snps_short.vcf
+     bcftools filter -s LowQual -e '%QUAL<30 || DP<10' dv_output.vcf > filtered_snps_long.vcf
      ```
 
 ## 2. Annotation of SNPs:
