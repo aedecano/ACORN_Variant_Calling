@@ -74,9 +74,13 @@ Snippy is an all-in-one tool for bacterial SNP calling using short-read data. It
      samtools sort aligned_long_reads.bam -o sorted_long_reads.bam
      ```
      
-   - Index the BAM file with samtools.
+   - Index the BAM file.
      ```
      samtools index sorted_long_reads.bam
+     ```
+   - Remove duplicates.
+     ```
+     samtools rmdup sorted_long_reads.bam deduplicated.bam
      ```
 
    - Use DeepVariant to call SNPs from the long-read BAM file.
