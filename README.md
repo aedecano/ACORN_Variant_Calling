@@ -54,35 +54,15 @@ Snippy is an all-in-one tool for bacterial SNP calling using short-read data. It
      - alignment.bam: The aligned reads in BAM format.
      - alignment.bam.bai: The BAM index file. 
 
-## Long Read Alignment with minimap2 and SNP Calling with Medaka or DeepVariant
+## Long Read Alignment with minimap2 and SNP Calling with Medaka or DeepVariant.
 
-### 1. Align the Reads to the Reference Genome:
-   - Use minimap2 for aligning long reads.
-     ```
-     minimap2 -a reference.fasta long_reads.fastq > aligned_long_reads.sam
-     ```
-
-### 2. Convert SAM to BAM and Sort:
-   - Convert and sort the alignment.
-     ```
-     samtools view -S -b aligned_long_reads.sam > aligned_long_reads.bam
-     
-     samtools sort aligned_long_reads.bam -o sorted_long_reads.bam
-     ```
-### 3. Index the BAM File:
-   - Index the BAM file with samtools.
-     ```
-     samtools index sorted_long_reads.bam
-     ```
-### 4. Call genetic variants against the reference genome.
-
-#### 4.1 Run Medaka:
+### Run Medaka:
   - Use Medaka to call SNPs from the long-read BAM file.
     ```
     medaka_haploid_variant -i longread.input.fastq.gz -r reference.fasta
     ```
 
-#### 4.2 Run DeepVariant:
+### Run DeepVariant:
    - Use minimap2 for aligning long reads.
      ```
      minimap2 -a reference.fasta long_reads.fastq > aligned_long_reads.sam
@@ -105,7 +85,7 @@ Snippy is an all-in-one tool for bacterial SNP calling using short-read data. It
 
      run_deepvariant --model_type PACBIO --ref reference.fasta --reads sorted_long_reads.bam --output_vcf dv_output.vcf --output_gvcf dv_output.g.vcf --num_shards 4
      ```
-## Use PEPPER DeepVariant for nanopore reads: https://github.com/kishwarshafin/pepper
+### Use PEPPER DeepVariant for nanopore reads: https://github.com/kishwarshafin/pepper
 
 ```
 ## Pull the docker image.
@@ -126,16 +106,16 @@ run_pepper_margin_deepvariant call_variant \
 ```
 
 
-### Post-processing and Analysis
+## Post-processing and Analysis
 
-## 1. Filter SNPs:
+### 1. Filter SNPs:
    - Apply filters to the VCF files to ensure high-quality SNPs using bcftools. Remove SNPs/Indels with MQ<30 and DP<10.
      ```
      bcftools filter -s LowQual -e '%QUAL<30 || DP<10' snippy_output/snps.vcf > filtered_snps_short.vcf
      bcftools filter -s LowQual -e '%QUAL<30 || DP<10' dv_output.vcf > filtered_snps_long.vcf
      ```
 
-## 2. Annotation of SNPs:
+### 2. Annotation of SNPs:
    - Use snpEff to annotate the SNPs.
      ```
      #short reads
@@ -145,7 +125,7 @@ run_pepper_margin_deepvariant call_variant \
      snpEff ann -v reference filtered_snps_long.vcf > annotated_snps_long.vcf
      ```
 
-## 3. Visualization:
+### 3. Visualization:
    - Visualize the alignment and SNPs using tools using Integrative Genomics Viewer (IGV).
    - Download IGV from https://igv.org/doc/desktop/#DownloadPage/.
 
