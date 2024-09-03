@@ -52,9 +52,9 @@ Snippy is an all-in-one tool for bacterial SNP calling using short-read data. It
      - snps.vcf: The called SNPs in VCF format.
      - snps.tab: A tabular summary of SNPs.
      - alignment.bam: The aligned reads in BAM format.
-     - alignment.bam.bai: The BAM index file.
+     - alignment.bam.bai: The BAM index file. 
 
-## Long Read Alignment and SNP Calling with DeepVariant
+## Long Read Alignment with minimap2 and SNP Calling with Medaka or DeepVariant
 
 ### 1. Align the Reads to the Reference Genome:
    - Use minimap2 for aligning long reads.
@@ -74,11 +74,40 @@ Snippy is an all-in-one tool for bacterial SNP calling using short-read data. It
      ```
      samtools index sorted_long_reads.bam
      ```
+### 4. Call the variants against the reference genome.
 
-### 4. Run DeepVariant:
+#### 4.1 Run Medaka:
+  - Use Medaka to call SNPs from the long-read BAM file.
+    ```
+    medaka_haploid_variant -i longread.input.fastq.gz -r reference.fasta
+    ```
+ - Filter variants using bcftools. Remove SNPs/Indels with MQ < 30.
+   ```
+   bcftools filter -i 'INFO/MQ >= 30' input.vcf -o filtered_output.vcf
+
+   ```
+
+#### 4.2 Run DeepVariant:
+   - Use minimap2 for aligning long reads.
+     ```
+     minimap2 -a reference.fasta long_reads.fastq > aligned_long_reads.sam
+     ```
+     
+   - Convert and sort the alignment.
+     ```
+     samtools view -S -b aligned_long_reads.sam > aligned_long_reads.bam
+     samtools sort aligned_long_reads.bam -o sorted_long_reads.bam
+     ```
+     
+   - Index the BAM file with samtools.
+     ```
+     samtools index sorted_long_reads.bam
+     ```
+
    - Use DeepVariant to call SNPs from the long-read BAM file.
      ```
      # Assuming DeepVariant is installed and properly set up
+
      run_deepvariant --model_type PACBIO --ref reference.fasta --reads sorted_long_reads.bam --output_vcf dv_output.vcf --output_gvcf dv_output.g.vcf --num_shards 4
      ```
 ## Use PEPPER DeepVariant for nanopore reads: https://github.com/kishwarshafin/pepper
