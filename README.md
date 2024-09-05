@@ -49,7 +49,7 @@ Snippy is an all-in-one tool for bacterial SNP calling using short-read data. It
 
 ### 2. Examine the Output:
 
-   ```
+     ```
      cd snippy_output
      ```
    - The output directory will contain various files, including:
