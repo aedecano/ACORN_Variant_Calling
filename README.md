@@ -48,11 +48,15 @@ Snippy is an all-in-one tool for bacterial SNP calling using short-read data. It
      ```
 
 ### 2. Examine the Output:
+   
+   ```
+    cd snippy_output
+    ```
    - The output directory will contain various files, including:
      - snps.vcf: The called SNPs in VCF format.
      - snps.tab: A tabular summary of SNPs.
      - alignment.bam: The aligned reads in BAM format.
-     - alignment.bam.bai: The BAM index file. 
+     - alignment.bam.bai: The BAM index file.
 
 ## Long Read Alignment with minimap2 and SNP Calling with Medaka or DeepVariant.
 
