@@ -117,7 +117,7 @@ run_pepper_margin_deepvariant call_variant \
    - Apply filters to the VCF files to ensure high-quality SNPs using bcftools. Remove SNPs/Indels with MQ<30 and DP<10.
      ```
      bcftools filter -s LowQual -e '%QUAL<30 || DP<10' snippy_output/snps.vcf > filtered_snps_short.vcf
-     bcftools filter -s LowQual -e '%QUAL<30 || DP<10' dv_output.vcf > filtered_snps_long.vcf
+     bcftools filter -s LowQual -e '%QUAL<30 || DP<10' medaka_output.vcf > filtered_snps_long.vcf
      ```
 
 ### 2. Annotation of SNPs:
