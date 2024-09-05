@@ -14,10 +14,12 @@ Before starting, ensure you have the following software installed:
 - For long reads:
   - minimap2
   - samtools
+  - Medaka
   - DeepVariant
 - General tools:
   - FastQC for quality control
   - MultiQC for aggregating QC reports
+  - snpEff
 
 ## Data Preparation
 
