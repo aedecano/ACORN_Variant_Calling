@@ -1,4 +1,4 @@
-# Genome Alignment and SNP Calling of Bacterial Genomes: A Tutorial for ACORN Integrated AMR Analysis Workshop in Kilifi Kenya (September 2024)
+# Genome Alignment and SNP Calling of Bacterial Genomes: A Tutorial for ACORN Integrated AMR Analysis Workshop in Kilifi, Kenya September 2024
 
 ## Introduction
 
