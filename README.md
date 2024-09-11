@@ -1,4 +1,4 @@
-# Genome Alignment and SNP Calling of Bacterial Genomes: A Tutorial for ACORN Integrated AMR Analysis Workshop in Kilifi, Kenya September 2024
+# Genome Alignment and SNP Calling of Bacterial Genomes: A Tutorial for ACORN Integrated AMR Analysis Workshop in Kilifi, Kenya (September 2024)
 
 ## Introduction
 
@@ -138,6 +138,64 @@ run_pepper_margin_deepvariant call_variant \
 ### 3. Visualization:
    - Visualize the alignment and SNPs using tools using Integrative Genomics Viewer (IGV).
    - Download IGV from https://igv.org/doc/desktop/#DownloadPage/.
+   - Example pop-up info of a selected SNP:
+ID: .
+Chr: NC_009648.1
+Position: 2,803,960
+Reference: C*
+Alternate: T
+Qual: 882.977
+Type: SNP
+Is Filtered Out: No
+Alleles:
+Alternate Alleles: T
+Variant Attributes
+QA: 1039
+AB: 0
+QR: 32
+Depth: 30
+RO: 1
+TYPE: snp
+AO: 29
+   - Explanation of each metric:
+
+*Basic Information*
+
+ID: This field is empty, indicating no specific identifier (such as a dbSNP ID) is assigned to this SNP.
+
+Chr: NC_009648.1 is the chromosome or contig reference name from the genome assembly.
+
+Position: 2,803,960 is the position on the chromosome where this SNP is located.
+
+Reference: C* indicates the reference allele (the allele found in the reference genome) at this position is "C".
+
+Alternate: T is the alternate allele observed in this SNP, meaning a "C" in the reference is replaced by "T" in the observed variant.
+
+Qual (Quality): 882.977 is a quality score for the variant call. It indicates the confidence in the variant being true; higher scores mean greater confidence.
+
+Type: SNP specifies that this variant is a single nucleotide polymorphism.
+
+Is Filtered Out: No indicates that this SNP has passed any filters applied during variant calling, suggesting it is considered a reliable call.
+
+*Alleles Information*
+
+Alternate Alleles: T is the alternate allele for this SNP.
+
+*Variant Attributes*
+
+QA (Quality of Alternate): 1039 is the sum of base quality scores for the reads supporting the alternate allele (T). Higher values suggest more confidence in the variant call.
+
+AB (Allele Balance): 0 represents the proportion of reads supporting the alternate allele relative to the total depth. Since it is 0, this may mean that the calculation could not be performed, or the data isn't available.
+
+QR (Quality of Reference): 32 is the sum of base quality scores for the reads supporting the reference allele (C). Lower values suggest fewer or less confident reads supporting the reference allele.
+
+Depth: 30 is the total read depth at this position, representing the number of reads covering the SNP site.
+
+RO (Reference Observations): 1 indicates the number of reads supporting the reference allele (C).
+
+TYPE: snp reaffirms that this variant is a single nucleotide polymorphism.
+
+AO (Alternate Observations): 29 is the number of reads supporting the alternate allele (T).
 
 
 ## References
