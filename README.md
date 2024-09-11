@@ -139,6 +139,7 @@ run_pepper_margin_deepvariant call_variant \
    - Visualize the alignment and SNPs using tools using Integrative Genomics Viewer (IGV).
    - Download IGV from https://igv.org/doc/desktop/#DownloadPage/.
    - Example pop-up info of a selected SNP:
+     
 ID: .
 
 Chr: NC_009648.1
