@@ -140,23 +140,41 @@ run_pepper_margin_deepvariant call_variant \
    - Download IGV from https://igv.org/doc/desktop/#DownloadPage/.
    - Example pop-up info of a selected SNP:
 ID: .
+
 Chr: NC_009648.1
+
 Position: 2,803,960
+
 Reference: C*
+
 Alternate: T
+
 Qual: 882.977
+
 Type: SNP
+
 Is Filtered Out: No
+
 Alleles:
+
 Alternate Alleles: T
-Variant Attributes
+
+*Variant Attributes*
+
 QA: 1039
+
 AB: 0
+
 QR: 32
+
 Depth: 30
+
 RO: 1
+
 TYPE: snp
+
 AO: 29
+
    - Explanation of each metric:
 
 *Basic Information*
