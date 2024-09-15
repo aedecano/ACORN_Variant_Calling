@@ -41,9 +41,8 @@ Before starting, ensure you have the following software installed:
      ```
 ### 3. Make sure you're in the correct working directory where the files are accessible
 
-    ```
     cd /data/acorn_training_course_2024
-    ```
+    
     
 ## Short Read Alignment and SNP Calling with Snippy
 
