@@ -39,6 +39,12 @@ Before starting, ensure you have the following software installed:
      ```
      fastp -i in.R1.fq.gz -I in.R2.fq.gz -o out.R1.fq.gz -O out.R2.fq.gz
      ```
+### 3. Make sure you're in the correct working directory where the files are accessible
+
+    ```
+    cd /data/acorn_training_course_2024
+    ```
+    
 ## Short Read Alignment and SNP Calling with Snippy
 
 Snippy is an all-in-one tool for bacterial SNP calling using short-read data. It aligns the reads to a reference genome and calls variants.
