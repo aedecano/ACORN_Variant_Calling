@@ -134,10 +134,10 @@ run_pepper_margin_deepvariant call_variant \
    - Use snpEff to annotate the SNPs.
      ```
      #short reads
-     snpEff ann -v reference filtered_snps_short.vcf > annotated_snps_short.vcf
+      java -Xmx8g -jar snpEff.jar <reference_database> filtered_snps_short.vcf > annotated_snps_short.vcf
 
      #long reads
-     snpEff ann -v reference filtered_snps_long.vcf > annotated_snps_long.vcf
+      java -Xmx8g -jar snpEff.jar reference filtered_snps_long.vcf > annotated_snps_long.vcf
      ```
 
 ### 3. Visualization:
