@@ -131,7 +131,8 @@ run_pepper_margin_deepvariant call_variant \
      ```
 
 ### 2. Annotation of SNPs:
-   - Use snpEff to annotate the SNPs.
+   - Use snpEff to annotate the SNPs: https://pcingola.github.io/SnpEff/snpeff/running/
+     
      ```
      #short reads
       java -Xmx8g -jar snpEff.jar <reference_database> filtered_snps_short.vcf > annotated_snps_short.vcf
